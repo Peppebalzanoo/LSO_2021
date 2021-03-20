@@ -49,8 +49,8 @@ public class MultiPlayerOnlineFragment extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
 
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -82,6 +82,7 @@ public class MultiPlayerOnlineFragment extends Fragment {
 
         if(i==2){
             ctrlOnline.disableButton();
+            ctrlOnline.timerProblem();
         } else {
             ctrlOnline.timer();
         }

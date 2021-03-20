@@ -30,6 +30,7 @@ public class ControllerMultiPlayerOnline {
     ControllerMultiPlayerOnline ctrlmpo;
     MultiPlayerOnlineFragment mpof;
     CountDownTimer countDownTimer = null;
+    CountDownTimer problemTimer = null;
 
     public ControllerMultiPlayerOnline(Activity activity, Context context, FragmentTransaction fr){
         this.activity=activity;
@@ -92,6 +93,7 @@ public class ControllerMultiPlayerOnline {
    public void sendMsg(String str){
 
        clientConnection.send(str);
+       timerProblem();
 
    }
 
@@ -106,6 +108,7 @@ public class ControllerMultiPlayerOnline {
                    try{
 
                        read[0] = clientConnection.rec();
+                       stopTimer(problemTimer);
 
                        if(read[0].equals("vittoria")){
 
@@ -185,6 +188,13 @@ public class ControllerMultiPlayerOnline {
     }
 
 
+    public void stopTimer(CountDownTimer timer){
+        if(timer !=  null){
+            timer.cancel();
+        }
+    }
+
+
 
     public void returnHome(FragmentTransaction fr){
 
@@ -192,6 +202,7 @@ public class ControllerMultiPlayerOnline {
         if(countDownTimer !=  null){
             countDownTimer.cancel();
         }
+        stopTimer(problemTimer);
 
         fr.replace(R.id.fragmentAcor, new HomeFragment());
         fr.commit();
@@ -203,6 +214,7 @@ public class ControllerMultiPlayerOnline {
         clientConnection.disconnect();
         fr.replace(R.id.fragmentAcor, new HomeFragment());
         fr.commit();
+        stopTimer(problemTimer);
 
     }
 
@@ -217,6 +229,7 @@ public class ControllerMultiPlayerOnline {
                         if(countDownTimer !=  null){
                             countDownTimer.cancel();
                         }
+                        stopTimer(problemTimer);
                         mpof.getActivity().finish();
                     }
                 })
@@ -243,7 +256,7 @@ public class ControllerMultiPlayerOnline {
                 if(countDownTimer!=null){
                     countDownTimer.cancel();
                 }
-
+                stopTimer(problemTimer);
                 btn.setVisibility(View.VISIBLE);
             }
         });
@@ -375,10 +388,6 @@ public void timer(){
 }
 
 
-
-
-
-
 public void updateTimerText(int secondLeft){
 
 
@@ -399,19 +408,46 @@ public void updateTimerText(int secondLeft){
 }
 
 
+    public void pippo(FragmentTransaction fr ){
+
+        if(!clientConnection.getSocket().isClosed()){
+            returnHome(fr);
+        } else {
+            fr.replace(R.id.fragmentAcor, new HomeFragment());
+            fr.commit();
+        }
+
+    }
 
 
-public void pippo(FragmentTransaction fr ){
 
-       if(!clientConnection.getSocket().isClosed()){
-           returnHome(fr);
-       } else {
-           fr.replace(R.id.fragmentAcor, new HomeFragment());
-           fr.commit();
-       }
 
-}
+    public void timerProblem(){
 
+        problemTimer = new CountDownTimer(45000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+             }
+             @Override
+             public void onFinish() {
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+
+                        Toast.makeText(context, "Oops qualcosa è andato storto...", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                fr = mpof.getFragment();
+                returnHome(fr);
+            }
+        };
+
+        problemTimer.start();
+
+
+
+
+    }
 
 
 
