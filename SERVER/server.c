@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <netinet/in.h>
 #include <pthread.h>
+#include <errno.h>
 
 #define NUMBERS_CONNECTION_CLIENTS_IN_WAIT 10
 #define N N
@@ -22,7 +23,9 @@ void printError(char* str);
 
 
 
+
 struct Game{
+
     int user1;
     int user2;
 };
@@ -110,7 +113,8 @@ int main() {
             notifyThreadError(client_sd, client_sd2, partita);
         }
         printLog("[THREAD] Thread partita creato\n");
-
+        free(thread_sd);
+        free(thread_sd2);
 
     }
 
@@ -236,6 +240,8 @@ void *connection_handler(void *a){
 
     }
 
+
+
     close(thread_sd.user1);
     close(thread_sd.user2);
     printLog("[CONNESSIONE] Client disconnesso correttamente\n");
@@ -246,9 +252,14 @@ void *connection_handler(void *a){
 
 }
 
+
+
+
+
+
 void victoryForDisconnection(int client){
 
-    ssize_t write_size = write(client, "vfd\n", 4);
+    ssize_t write_size = write(client, "vfd\n", 5);
     if(write_size==-1){
         printError("[WRITE] Errore scrittura\n");
     } else {
@@ -341,7 +352,7 @@ int readWrite(int user1, int user2, int matrix[][3], int a){
 
 
         ssize_t write_size = write(user2, strcat(client_message, "\n"), 2);
-        if(write_size==-1){
+        if(write_size<=0){
             printError("[WRITE] Errore scrittura\n");
             return -2;
         }
