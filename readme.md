@@ -1,7 +1,5 @@
-# Tic-Tac-Toe Project
-
-## 📜 Overview
-Create a client-server system that allows players to engage in exciting Tic-Tac-Toe matches against one another! This project includes comprehensive documentation to guide users and developers alike.
+# 🎮 Tic-Tac-Toe Project
+Create a client-server system that allows players to engage in exciting Tic-Tac-Toe matches against one another!
 
 ## 📖 Detailed Description
 ### ⚙️ How It Works:
@@ -38,7 +36,7 @@ Create a client-server system that allows players to engage in exciting Tic-Tac-
 ## 🚀 Getting Started
 1. **Clone the Repository**: 
    ```bash
-   git clone https://github.com/yourusername/tic-tac-toe.git
+   git clone https://github.com/Peppebalzanoo/tic-tac-toe.git
    ```
 2. **Set Up the Server**:
    - Compile the C server code and run it on a UNIX/Linux environment.
