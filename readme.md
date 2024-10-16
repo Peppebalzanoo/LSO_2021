@@ -36,7 +36,7 @@ This is a simple university project developed as part of the Operating Systems L
 ## 🚀 Getting Started
 1. **Clone the Repository**: 
    ```bash
-   git clone https://github.com/Peppebalzanoo/tic-tac-toe.git
+   git clone https://github.com/Peppebalzanoo/tic-tac-toe-lso.git
    ```
 2. **Set Up the Server**:
    - Compile the C server code and run it on a UNIX/Linux environment.
