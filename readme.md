@@ -1,5 +1,5 @@
 # 🎮 Tic-Tac-Toe Project
-Create a client-server system that allows players to engage in exciting Tic-Tac-Toe matches against one another!
+This is a simple university project developed as part of the Operating Systems Laboratory Course (LSO). The goal is to create a client-server system that allows players to engage in exciting Tic-Tac-Toe matches against one another! This project includes comprehensive documentation to guide users and developers alike.
 
 ## 📖 Detailed Description
 ### ⚙️ How It Works:
