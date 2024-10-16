@@ -21,7 +21,7 @@ public class ClientConnection implements Runnable{
 
 
     private static final int N = N;
-    private static final String N = " ";
+    private static final String N = "IP";
     private Socket socket;
     private DataOutputStream o;
     private BufferedReader in;
