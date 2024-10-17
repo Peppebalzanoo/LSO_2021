@@ -45,3 +45,10 @@ This is a simple university project developed as part of the Operating Systems L
    - Open the Android project in your favorite IDE and run the application.
 
 4. **Play & Enjoy!** 🎉
+
+
+## 📄 Documentation
+For detailed documentation on the code structure, features, and further instructions, refer to the `docs` folder in this repository.
+
+## 🤝 Contributing
+We welcome contributions! Please fork the repository and submit a pull request with your changes. 
