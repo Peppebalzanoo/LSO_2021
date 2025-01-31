@@ -20,8 +20,8 @@ import java.net.UnknownHostException;
 public class ClientConnection implements Runnable{
 
 
-    private static final int N = N;
-    private static final String N = "IP";
+    private static final int PORT = ;
+    private static final String SERVER_IP = ;
     private Socket socket;
     private DataOutputStream o;
     private BufferedReader in;
