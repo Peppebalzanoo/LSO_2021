@@ -35,7 +35,7 @@ public class ClientConnection implements Runnable{
 
             socket = new Socket();
 
-            socket.connect(new InetSocketAddress(ClientConnection.N, ClientConnection.N), 500);
+            socket.connect(new InetSocketAddress(ClientConnection.SERVER_IP, ClientConnection.PORT), 500);
 
             o = new DataOutputStream(socket.getOutputStream());
 
